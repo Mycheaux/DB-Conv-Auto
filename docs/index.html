@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DB Converter Auto</title>
+    <meta
+      name="description"
+      content="DB Converter Auto helps create custom mapper and inverter neural networks for converting between non-overlapping tabular health data cohorts."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="DB Converter Auto home">
+        <span class="brand-mark">DB</span>
+        <span>DB Converter Auto</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#cite">Cite</a>
+        <a href="#start">Start</a>
+        <a href="#agentic">Gen2</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy glass">
+          <p class="eyebrow">Self-supervised database converter</p>
+          <h1>DB-Converter<span>Auto</span></h1>
+          <p class="lead">
+            <strong>Converts an incompatible cohort into a compatible, integrable one.</strong>
+          </p>
+          <p class="lead-secondary">
+            A category-theory-inspired, self-supervised framework that converts the schema of one
+            tabular health-data cohort into that of another without requiring linked individuals
+            across the two cohorts as ground-truth.
+          </p>
+          <p class="hero-detail">
+            Imagine you have two datasets. They use different scales, instruments, or questionnaires,
+            but they are trying to measure the same thing. Wouldn't it be great if you could convert
+            one into another and use it for downstream analysis? DB-converter tries to do that without
+            requiring any linked participants or one-to-one ground-truth pairs.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary large" href="https://github.com/Mycheaux/DB-conv">Get started</a>
+            <a
+              class="button secondary"
+              href="mailto:db-converter-auto@example.com?subject=Build%20with%20DB%20Converter%20Auto"
+            >Build with us</a>
+            <a
+              class="button secondary"
+              href="mailto:db-converter-auto@example.com?subject=Collaborate%20on%20DB%20Converter%20Auto"
+            >Collaborate with us</a>
+          </div>
+          <div class="pull-command" aria-label="Repository command">
+            <span>git clone</span>
+            <code>git clone https://github.com/Mycheaux/DB-conv.git</code>
+          </div>
+        </div>
+        <figure class="hero-figure glass" aria-label="DB Converter Auto workflow figure">
+          <img src="GithubFig.png" alt="Diagram of the bi-directional DB-converter training and inference workflow">
+        </figure>
+      </section>
+
+      <section id="cite" class="section cite-us">
+        <div class="section-heading">
+          <p class="eyebrow">Cite us</p>
+          <h2>You will be able to cite us soon.</h2>
+        </div>
+        <div class="glass cite-card">
+          <p>
+            <em>
+            Das et al. Self-supervised generative deep learning enables the conversion of
+            non-overlapping tabular health data cohorts. Under review.
+            </em>
+          </p>
+        </div>
+      </section>
+
+      <section id="what" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">What it does</p>
+          <h2>Converts an incompatible cohort into a compatible one when they measure the same aspect of health but in different devices and metrics.</h2>
+        </div>
+        <div class="glass-grid">
+          <article class="glass">
+            <h3>Non-overlapping conversion</h3>
+            <p>
+              Trains without linked samples, shared participant identifiers, or paired records. The
+              assumption is that both cohorts measure the same or interconvertible underlying
+              reality.
+            </p>
+          </article>
+          <article class="glass">
+            <h3>Mapper and inverter</h3>
+            <p>
+              The forward converter maps source features into the target schema. The backward
+              converter reverses the feature dimensions, and the two networks train in tandem through
+              converted and reconverted samples.
+            </p>
+          </article>
+          <article class="glass">
+            <h3>Structure preservation</h3>
+            <p>
+              The method is designed to preserve local neighborhoods, global distributions, and
+              downstream task utility so converted cohorts can support model transfer and larger
+              integrated training sets.
+            </p>
+          </article>
+          <article class="glass">
+            <h3>Custom neural networks</h3>
+            <p>
+              For new data, the essential requirement is simple: the mapper input and output match
+              the two cohort dimensions, while the inverter reverses those dimensions. Hidden layers
+              can be adapted to the data modality.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="start" class="section start-section">
+        <div class="section-heading">
+          <p class="eyebrow">Start</p>
+          <h2>Three practical ways to use DB Converter Auto.</h2>
+        </div>
+        <div class="steps">
+          <article class="glass step">
+            <span class="step-number">1</span>
+            <h3>Install and run locally</h3>
+            <p>
+              Clone the repository, create the Python environment, prepare the config files, and run
+              training with <code>python3 main.py</code>. Use <code>python3 inference.py</code> after
+              a trained checkpoint exists.
+            </p>
+          </article>
+          <article class="glass step">
+            <span class="step-number">2</span>
+            <h3>Prepare cohort data</h3>
+            <p>
+              Provide complete numerical feature matrices for both cohorts, min-max normalize them,
+              split them into train, validation, and test sets, and point <code>config/data_path.yaml</code>
+              to the prepared arrays.
+            </p>
+          </article>
+          <article class="glass step">
+            <span class="step-number">3</span>
+            <h3>Create the custom mapper and inverter</h3>
+            <p>
+              Match <code>config/architecture.yaml</code> and <code>src/model.py</code> to the real
+              data dimensions. The mapper converts cohort A to cohort B; the inverter converts cohort
+              B back to cohort A.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="notebook" class="section split">
+        <div>
+          <p class="eyebrow">Notebook option</p>
+          <h2>Run the notebook when you want a guided experiment.</h2>
+        </div>
+        <div class="glass section-body">
+          <p>
+            The repository includes a Google Colab workflow in the notebook archive. Use it for a
+            lower-friction experiment, especially when you want to test the DB-converter idea before
+            setting up a full local environment.
+          </p>
+          <p>
+            For custom cohorts, bring your own numerical, normalized, split data and adapt the
+            mapper and inverter dimensions just as you would in the local repository.
+          </p>
+        </div>
+      </section>
+
+      <section id="agentic" class="section agentic">
+        <div class="section-heading">
+          <p class="eyebrow">Gen2 agentic automatisation</p>
+          <h2>Use Codex or Claude to build custom networks and preprocessing.</h2>
+        </div>
+        <div class="glass command-board">
+          <p>
+            Once the repository is downloaded locally, open it in Codex or Claude. The repo includes
+            agent startup files so the agent can recognize project commands.
+          </p>
+          <div class="command-list">
+            <code>!build_custom_NN</code>
+            <span>Create mapper and inverter architectures from the actual cohort dimensions.</span>
+            <code>!run_feature_selection</code>
+            <span>Beta, expert-guided variable suggestion from cohort documentation.</span>
+            <code>!build_preprocessed_data</code>
+            <span>Build normalized preprocessed data from the reviewed feature-selection form.</span>
+          </div>
+          <p>
+            The feature-selection workflow is human-in-the-loop. The variables left in the reviewed
+            form are the variables the agent should use.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>DB Converter Auto</span>
+    </footer>
+  </body>
+</html>
