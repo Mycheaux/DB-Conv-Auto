@@ -8,7 +8,7 @@ Use the user's Word form as the working document:
 
 - `Feature selection form.docx`
 
-The user writes the minimum variables or constructs they care about in black. Whenever possible, the user should include the exact variable ID used in the cohort documentation or raw data dictionary, not only the descriptive label. The agent reads the cohort documentation in this same folder, then adds suggestions in red in the open space of the form or in a copy named `Feature selection form - with red suggestions.docx`.
+The user writes the minimum variables or constructs they care about in black. The agent reads the cohort documentation in this same folder, then adds suggestions in red in the open space of the form or in a copy named `Feature selection form - with red suggestions.docx`.
 
 Keep suggestions grouped by cohort: one red block for cohort A and one red block for cohort B. Do not mix candidate variables, documentation notes, and final approved choices in the same paragraph.
 
@@ -21,7 +21,7 @@ Type these commands in the Codex or Claude agent chat:
 - `!run_feature_selection`: the agent reads this form and the documentation files, then adds candidate variable suggestions in red.
 - `!build_preprocessed_data`: after reviewing the red suggestions, the agent creates preprocessed data from the variables that remain in the reviewed form.
 
-Before running `!build_preprocessed_data`, the user must open the form edited by the agent and save the final list. Whatever remains in the reviewed form will be used. Delete variables there if they should not be used. Add variables there if they should be used. The final reviewed list should include each variable's ID, because preprocessing should select columns by stable IDs whenever the raw data and documentation provide them.
+Before running `!build_preprocessed_data`, the user must open the form edited by the agent and save the final list. Whatever remains in the reviewed form will be used. Delete variables there if they should not be used. Add variables there if they should be used.
 
 ## Agent Workflow
 
@@ -30,9 +30,9 @@ Before running `!build_preprocessed_data`, the user must open the form edited by
 3. Identify the user's required variables or constructs for cohort A and cohort B.
 4. For each cohort A entry, suggest related cohort B variables in red under the cohort A block.
 5. For each cohort B entry, suggest related cohort A variables in red under the cohort B block.
-6. Use variable IDs, variable names, labels, coding notes, value ranges, questionnaire domains, and clinical meaning when judging similarity.
+6. Use variable names, labels, coding notes, value ranges, questionnaire domains, and clinical meaning when judging similarity.
 7. Mark weak or uncertain matches clearly in red.
-8. Stop and ask the user to approve, delete, correct, or add exact variable IDs for the suggestions.
+8. Stop and ask the user to approve, delete, or correct the suggestions.
 9. Only after approval, ask where the raw data files are.
 10. Preprocess the approved columns, min-max normalize them, split them into train, validation, and test sets, and update `config/data_path.yaml` and `config/architecture.yaml`.
 
@@ -48,7 +48,6 @@ Before preprocessing, confirm:
 
 - final cohort A variables and column order
 - final cohort B variables and column order
-- exact variable IDs for cohort A and cohort B, where available
 - raw data file locations
 - missingness rule
 - categorical recoding rule
