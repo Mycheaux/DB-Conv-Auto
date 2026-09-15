@@ -293,6 +293,8 @@ If the preprocessed data are missing or saved outside the default preprocessed f
 
 **Auto feature beta: automatic feature selection with HITL.** For expert/pro agent users, an agent can read cohort documentation and suggest comparable variables in the feature selection form. This beta workflow requires human-in-the-loop review and approval before preprocessing or model changes.
 
+See [feature selection/README.md](../feature%20selection/README.md) for instructions on filling the form with variable IDs and placing cohort data documentation files in the feature selection folder.
+
 Start beta feature selection in a Codex or Claude agent chat with:
 
 ```text

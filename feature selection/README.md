@@ -1,66 +1,51 @@
 # Feature Selection
 
-This folder is intentionally simple. It is an optional human-guided step before DB-converter preprocessing.
+This is an optional beta workflow for expert/pro agent users. Most users should skip it and provide already selected, preprocessed data.
 
-This is a beta feature for expert/pro agent users. Most users should skip this folder and provide already selected, preprocessed data.
+Use this folder when you want an agent to help suggest comparable variables across two cohorts before preprocessing.
 
-Use the user's Word form as the working document:
+## What To Put Here
 
 - `Feature selection form.docx`
+- Cohort A documentation, such as a data dictionary, codebook, PDF, Excel sheet, CSV, TSV, DOCX, or text file
+- Cohort B documentation in the same kind of format
 
-The user writes the minimum variables or constructs they care about in black. Whenever possible, the user should include the exact variable ID used in the cohort documentation or raw data dictionary, not only the descriptive label. The agent reads the cohort documentation in this same folder, then adds suggestions in red in the open space of the form or in a copy named `Feature selection form - with red suggestions.docx`.
+Use the exact variable IDs from the documentation or raw data whenever possible. Variable labels are helpful, but IDs are what the agent should use for preprocessing.
 
-Keep suggestions grouped by cohort: one red block for cohort A and one red block for cohort B. Do not mix candidate variables, documentation notes, and final approved choices in the same paragraph.
+## Steps
 
-Place cohort documentation files directly in this folder unless the user asks for a different organization. Accept PDF, DOCX, XLSX, CSV, TSV, or plain text documentation.
+1. Open `Feature selection form.docx`.
+2. Fill in the minimum variables or constructs you require for each cohort.
+3. Include each variable ID when you know it.
+4. Copy or place the cohort documentation files into this folder.
+5. In Codex or Claude, run:
 
-## Agent Chat Commands
+```text
+!run_feature_selection
+```
 
-Type these commands in the Codex or Claude agent chat:
+6. The agent reads the form and documentation, then adds suggested comparable variables in red.
+7. Review the edited form carefully. Delete anything you do not want used, add anything missing, and make sure the final kept variables have IDs.
+8. Save the reviewed form.
+9. Run:
 
-- `!run_feature_selection`: the agent reads this form and the documentation files, then adds candidate variable suggestions in red.
-- `!build_preprocessed_data`: after reviewing the red suggestions, the agent creates preprocessed data from the variables that remain in the reviewed form.
+```text
+!build_preprocessed_data
+```
 
-Before running `!build_preprocessed_data`, the user must open the form edited by the agent and save the final list. Whatever remains in the reviewed form will be used. Delete variables there if they should not be used. Add variables there if they should be used. The final reviewed list should include each variable's ID, because preprocessing should select columns by stable IDs whenever the raw data and documentation provide them.
-
-## Agent Workflow
-
-1. Read `Feature selection form.docx`.
-2. Read the documentation files in this folder.
-3. Identify the user's required variables or constructs for cohort A and cohort B.
-4. For each cohort A entry, suggest related cohort B variables in red under the cohort A block.
-5. For each cohort B entry, suggest related cohort A variables in red under the cohort B block.
-6. Use variable IDs, variable names, labels, coding notes, value ranges, questionnaire domains, and clinical meaning when judging similarity.
-7. Mark weak or uncertain matches clearly in red.
-8. Stop and ask the user to approve, delete, correct, or add exact variable IDs for the suggestions.
-9. Only after approval, ask where the raw data files are.
-10. Preprocess the approved columns, min-max normalize them, split them into train, validation, and test sets, and update `config/data_path.yaml` and `config/architecture.yaml`.
-
-Do not create a large folder structure unless the user asks for it. Do not treat agent suggestions as approved variables.
+The variables left in the reviewed form are the variables the agent will use for preprocessing.
 
 ## Human Review Rule
 
-This is a beta feature. It should be used only by expert/pro agent users who want documentation-based variable suggestions.
-
-The agent may suggest candidate variables, but the user must approve the final variable list before preprocessing or model changes.
+Do not treat red suggestions as approved automatically. The user must approve the final variable list before preprocessing or model changes.
 
 Before preprocessing, confirm:
 
-- final cohort A variables and column order
-- final cohort B variables and column order
-- exact variable IDs for cohort A and cohort B, where available
+- final cohort A variable IDs and column order
+- final cohort B variable IDs and column order
 - raw data file locations
-- missingness rule
-- categorical recoding rule
-- split proportions
-- random seed
+- missingness and categorical recoding rules
+- split proportions and random seed
 - output folder
 
-## After Approval
-
-Once the user approves the variables, this folder's job is finished. Continue with the main mapper/inverter workflow:
-
-- create normalized train, validation, and test arrays
-- update `config/data_path.yaml`
-- update `config/architecture.yaml`
-- create or update the mapper and inverter so their input and output dimensions match the data
+After approval, the agent should create normalized train, validation, and test arrays, then update `config/data_path.yaml` and `config/architecture.yaml` so the mapper and inverter workflow can run.
