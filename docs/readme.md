@@ -24,7 +24,7 @@ A. During training, the train and dev sets of two databases, DB1 and DB2, are us
 We deploy this app in 3 possible ways. **1.** **GitHub** (one needs to set up one's own environment) ` **Google Colab** (one doesn't need to set up the environment) **3.** **Docker image**  (one doesn't need to set up the environment). 
 
 # Clone Repo
-`git clone https://github.com/Mycheaux/db-conv-auto.git`
+`git clone https://github.com/Mycheaux/DB-Conv-Auto.git`
 
 # Solution 1: Directly run this Github repo
 
