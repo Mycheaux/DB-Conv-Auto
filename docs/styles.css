@@ -356,14 +356,6 @@ code {
   align-items: center;
 }
 
-.command-list code {
-  width: fit-content;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: 0;
-}
-
 .command-list span {
   color: var(--muted);
 }
