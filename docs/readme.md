@@ -304,9 +304,3 @@ After reviewing and saving the form edited by the agent, create preprocessed dat
 ```
 
 The variables that remain in the reviewed form will be used. Delete variables from the form if they should not be used, or add variables to the form if they should be used, before running the preprocessing command.
-
-## Lightweight Website
-
-This repository includes a static website in `docs/index.html` with styling in `docs/styles.css`. It can be hosted directly on CoSy.Bio, under `apps.cosy.bio`, or through GitHub Pages with a CoSy.Bio custom subdomain.
-
-For deployment notes, see `docs/DEPLOY_COSY.md`.
